@@ -49,8 +49,7 @@ public class Consumer extends Thread
             n = n/10; 
         } 
          
-         System.out.println(name +" consumed."+bufferNum);
-         System.out.println("Sum of digits in " + name + ": " +sum);
+         System.out.println(name +" consumed "+bufferNum + " Sum of digits in " + name + ": " +sum);
       }
    }
 
