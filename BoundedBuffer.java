@@ -52,9 +52,9 @@ public class BoundedBuffer
       item = buffer[out];
       out = (out + 1) % BUFFER_SIZE;
 
-	if (count == 0)
-
-                System.out.println(" Buffer EMPTY");
+	if (count == 0) {
+            System.out.println(" Buffer EMPTY");
+        }
 
       return item;
    }
