@@ -60,7 +60,8 @@ public class BoundedBuffer
    }
 
 
-   public static final int    NAP_TIME = 2;
+   public static final int    NAP_TIME_PRODUCER = 5;
+   public static final int    NAP_TIME_CONSUMER = 3;
    private static final int   BUFFER_SIZE = 5;
 
    private volatile int count;

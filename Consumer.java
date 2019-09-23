@@ -20,23 +20,37 @@ public class Consumer extends Thread
 
    public void run()
    {
-   Date message;
+   //Date message;
+   int bufferNum;
+   int sum;
+   int n;
+   String name = this.getName();
 
      while (true)
       {
-         int sleeptime = (int) (BoundedBuffer.NAP_TIME * Math.random()) +1;
+         int sleeptime = (int) (BoundedBuffer.NAP_TIME_CONSUMER * Math.random()) +4;
 
-         System.out.println("Consumer sleeping for " + sleeptime + " seconds");
+         System.out.println(name +" sleeping for " + sleeptime + " seconds");
 
          try { sleep(sleeptime*1000); }
          catch(InterruptedException e) {}
 
          // consume an item from the buffer
-         System.out.println("Consumer wants to consume.");
+         System.out.println(name +" wants to consume.");
 
-         message = (Date)buffer.remove();
-
-         System.out.println("Consumer consumed."+message);
+         //message = (Date)buffer.remove();
+         bufferNum = (int)buffer.remove();
+         
+         sum = 0;
+         n = bufferNum;
+          
+         while (n != 0) { 
+            sum = sum + n % 10; 
+            n = n/10; 
+        } 
+         
+         System.out.println(name +" consumed."+bufferNum);
+         System.out.println("Sum of digits in " + name + ": " +sum);
       }
    }
 

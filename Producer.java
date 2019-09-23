@@ -19,22 +19,27 @@ public class Producer extends Thread
 
    public void run()
    {
-   Date message;
+   //Date message;
+   int max = 50000; 
+   int min = 8000; 
+   int range = max - min + 1; 
+   String name = this.getName();
 
       while (true)
       {
-         int sleeptime = (int) (BoundedBuffer.NAP_TIME * Math.random()) +1;
+         int sleeptime = (int) (BoundedBuffer.NAP_TIME_PRODUCER * Math.random()) +3;
 
-         System.out.println("Producer sleeping for " + sleeptime + " seconds");
+         System.out.println(name +" sleeping for " + sleeptime + " seconds");
 
          try { sleep(sleeptime*1000); }
          catch(InterruptedException e) {}
 
          // produce an item & enter it into the buffer
-         message = new Date();
-         System.out.println("Producer produced " + message);
+         int randNum = (int) (Math.random() * range) + min;
+         //message = new Date();
+         System.out.println(name +" produced " + randNum);
 
-         buffer.enter(message);
+         buffer.enter(randNum);
       }
    }
 
